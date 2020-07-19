@@ -1,0 +1,80 @@
+<nav class="navbar navbar-default navbar-static-top">
+  <div class="container">
+    <div class="navbar-header">
+      <!-- Collapsed Hamburger -->
+      <button
+        type="button"
+        class="navbar-toggle collapsed"
+        data-toggle="collapse"
+        data-target="#app-navbar-collapse"
+      >
+        <span class="sr-only">Toggle Navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <!-- Branding Image -->
+      <a class="navbar-brand" href="">
+        Angular Blog 2020
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="app-navbar-collapse">
+      <!-- Left Side Of Navbar -->
+      <ul *ngIf="authService.isAdmin" class="nav navbar-nav">
+        <li><a routerLink="/admin/posts">Posts</a></li>
+        <li><a routerLink="/admin/categories">Categories</a></li>
+        <li><a routerLink="/admin/comments">Comments</a></li>
+        <li><a routerLink="/admin/tags">Tags</a></li>
+        <li><a routerLink="/admin/users">Users</a></li>
+      </ul>
+
+      <!-- Right Side Of Navbar -->
+      <ul *ngIf="!authService.isLogin" class="nav navbar-nav navbar-right">
+        <!-- Authentication Links -->
+        <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/register">Register</a></li>
+      </ul>
+
+      <!-- Right Side Of Navbar -->
+      <ul *ngIf="authService.isLogin" class="nav navbar-nav navbar-right">
+        <!-- Authentication Links -->
+        <li class="dropdown">
+          <a
+            href="#"
+            class="dropdown-toggle"
+            data-toggle="dropdown"
+            role="button"
+            aria-expanded="false"
+          >
+            {{authService.name}} <span class="caret"></span>
+          </a>
+
+          <ul class="dropdown-menu" role="menu">
+            <li>
+              <a (click)="logout()">
+                Logout
+              </a>
+
+              <form
+                id="logout-form"
+                action="logout"
+                method="POST"
+                style="display: none;"
+              >
+                <input
+                  type="hidden"
+                  name="_token"
+                  value="32Mxrb2s2QPyv3C1h4iYcbfZBT7PmU7Tfm9koxkk"
+                />
+              </form>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>

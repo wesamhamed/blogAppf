@@ -1,0 +1,155 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+        <div class="panel-heading">Register</div>
+        <div class="panel-body">
+          <form
+            class="form-horizontal"
+            role="form"
+            [formGroup]="registerForm"
+            (ngSubmit)="register()"
+          >
+            <div class="form-group">
+              <label for="name" class="col-md-4 control-label">Name</label>
+
+              <div class="col-md-6">
+                <input
+                  id="name"
+                  type="text"
+                  class="form-control"
+                  name="name"
+                  value=""
+                  required=""
+                  maxlength="6"
+                  autofocus=""
+                  formControlName="name"
+                />
+                <div
+                  *ngIf="
+                    registerForm.controls.name.invalid &&
+                    registerForm.controls.name.touched
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="registerForm.controls.name.errors.required"
+                    >This is required</span
+                  >
+                  <span
+                    class="text-danger"
+                    *ngIf="registerForm.controls.name.errors.minlength"
+                    >The min Length should be 6</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="col-md-4 control-label"
+                >E-Mail Address</label
+              >
+
+              <div class="col-md-6">
+                <input
+                  id="email"
+                  type="email"
+                  class="form-control"
+                  name="email"
+                  value=""
+                  required=""
+                  formControlName="email"
+                />
+                <div
+                  *ngIf="
+                    registerForm.controls.email.invalid &&
+                    registerForm.controls.email.touched
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="registerForm.controls.email.errors.required"
+                    >This is required</span
+                  >
+                  <span
+                    class="text-danger"
+                    *ngIf="registerForm.controls.email.errors.email"
+                    >This is should be email</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="col-md-4 control-label"
+                >Password</label
+              >
+
+              <div class="col-md-6">
+                <input
+                  id="password"
+                  type="password"
+                  class="form-control"
+                  name="password"
+                  required=""
+                  formControlName="password"
+                />
+                <div
+                  *ngIf="
+                    registerForm.controls.password.invalid &&
+                    registerForm.controls.password.touched
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="registerForm.controls.password.errors.required"
+                    >This is required</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="confirmPassword" class="col-md-4 control-label"
+                >Confirm Password</label
+              >
+
+              <div class="col-md-6">
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  class="form-control"
+                  name="confirmPassword"
+                  required=""
+                  formControlName="confirmPassword"
+                />
+                <div
+                  *ngIf="
+                    registerForm.controls.confirmPassword.invalid &&
+                    registerForm.controls.confirmPassword.touched
+                  "
+                >
+                  <span
+                    class="text-danger"
+                    *ngIf="
+                      registerForm.controls.confirmPassword.errors.required
+                    "
+                    >This is required</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-md-6 col-md-offset-4">
+                <button class="btn btn-primary">
+                  Register
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
